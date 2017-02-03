@@ -4,6 +4,9 @@ import javafx.scene.control.Alert
 import javafx.scene.control.ButtonType
 import tornadofx.*
 
+/**
+ * Sample 01 - Simple TornadoFX Example Application
+ */
 class Sample01TornadoFXApp : App(Sample01View::class)
 
 class Sample01View : View("Sample 01 TornadoFX") {

@@ -8,6 +8,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Sample 01 - Simple JavaFX Example Application
+ */
 public class Sample01JavaFXApp extends Application {
 
     public static void main(String[] args) {

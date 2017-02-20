@@ -21,12 +21,9 @@ public class Sample01JavaFXApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         BorderPane root = new BorderPane();
         Button button = new Button("Click Me");
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Button Clicked", ButtonType.OK);
         alert.setHeaderText("Sample 01 JavaFX");
-
         button.setOnAction(e -> alert.show());
-
         root.setCenter(button);
         primaryStage.setScene(new Scene(root, 400, 200));
         primaryStage.setTitle("Sample 01 JavaFX");

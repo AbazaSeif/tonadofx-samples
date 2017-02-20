@@ -13,7 +13,6 @@ class Sample01View : View("Sample 01 TornadoFX") {
     override val root = borderpane {
         prefWidth = 400.0
         prefHeight = 200.0
-
         center {
             button("Click Me") {
                 setOnAction {

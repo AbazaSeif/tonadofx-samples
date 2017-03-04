@@ -10,6 +10,13 @@ import tornadofx.*
 class Sample01TornadoFXApp : App(Sample01View::class)
 
 class Sample01View : View("Sample 01 TornadoFX") {
+    val api: Rest by inject()
+
+    init {
+
+        api.baseURI = "https://services.yesenergy.com/PS/rest"
+        api.setBasicAuth("jchildress@mercuria.com", "3daniel3")
+    }
     override val root = borderpane {
         prefWidth = 400.0
         prefHeight = 200.0

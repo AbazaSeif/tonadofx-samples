@@ -4,6 +4,10 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.scene.control.ButtonBar
 import tornadofx.*
 
+/**
+ * Demo form from Ron Smits' blog post https://ronsmits.org/2017/03/tornadofxform demonstrating enableWhen and
+ * disableWhen on Buttons.
+ */
 class Form2App : App(EnabledView::class)
 
 class EnabledView : View("Basic form") {

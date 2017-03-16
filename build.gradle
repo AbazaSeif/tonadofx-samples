@@ -7,7 +7,7 @@ apply plugin: 'maven'
 
 
 buildscript {
-    ext.kotlin_version = '1.1.0'
+    ext.kotlin_version = '1.1.1'
 
     repositories {
         mavenLocal()
@@ -15,7 +15,6 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -28,8 +27,9 @@ repositories {
 
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version'
-
-    compile 'no.tornado:tornadofx:1.7.1-SNAPSHOT'
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.13'
+    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-javafx:0.13'
+    compile 'no.tornado:tornadofx:1.7.0'
     compile 'org.slf4j:slf4j-api:1.7.21'
 
     testCompile 'junit:junit:4.12'

@@ -15,7 +15,7 @@ class Sample01View : View("Sample 01 TornadoFX") {
     init {
 
         api.baseURI = "https://services.yesenergy.com/PS/rest"
-        api.setBasicAuth("jchildress@mercuria.com", "3daniel3")
+        api.setBasicAuth("", "")
     }
     override val root = borderpane {
         prefWidth = 400.0

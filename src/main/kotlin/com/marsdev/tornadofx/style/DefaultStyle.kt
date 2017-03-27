@@ -95,7 +95,7 @@ class DefaultStyle : Stylesheet() {
 
         // button
         button {
-            backgroundColor = multi(tfxShadowHighlightColor, tfxOuterBorder, tfxInnerBorder, tfxBodyColor)
+            //            backgroundColor = multi(tfxShadowHighlightColor, tfxOuterBorder, tfxInnerBorder, tfxBodyColor)
 //            backgroundColor  += tfxBodyColor
             and(default) {
 

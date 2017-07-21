@@ -31,7 +31,7 @@ dependencies {
     compile 'org.jetbrains.kotlinx:kotlinx-coroutines-javafx:0.13'
     compile 'no.tornado:tornadofx:1.7.8-SNAPSHOT'
     compile 'org.slf4j:slf4j-api:1.7.21'
-
+    compile 'org.jfree:fxgraphics2d:1.5'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

@@ -21,7 +21,7 @@ class ChartCSS : Stylesheet() {
     }
 }
 
-class ChartView : View("Chart View") {
+class ChartView : View("Chart View Sample") {
     override val root = borderpane {
         center {
             piechart("Desktop/Laptop OS Market Share") {

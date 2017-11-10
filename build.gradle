@@ -39,6 +39,7 @@ dependencies {
     compile 'org.jetbrains.kotlin:kotlin-test-junit:1.0.4'
     testCompile 'org.jetbrains.kotlin:kotlin-test-junit:1.0.4'
 
+    compile 'eu.hansolo.fx:smoothcharts:1.0'
 }
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'

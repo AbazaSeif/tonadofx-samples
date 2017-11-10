@@ -6,10 +6,14 @@ import javafx.geometry.Insets
 import javafx.scene.chart.CategoryAxis
 import javafx.scene.chart.NumberAxis
 import javafx.scene.chart.XYChart
+import javafx.scene.effect.BlurType
+import javafx.scene.effect.DropShadow
+import javafx.scene.effect.InnerShadow
 import javafx.scene.layout.Background
 import javafx.scene.layout.BackgroundFill
 import javafx.scene.layout.CornerRadii
-import javafx.scene.paint.Color
+import javafx.scene.paint.*
+import javafx.scene.shape.StrokeLineCap
 import tornadofx.*
 
 class SCEApp : App(SCEView::class)
@@ -18,6 +22,11 @@ class SCEView : View("SmoothCharts Example") {
     val tweaked2Series1 = XYChart.Series<String, Number>()
     val tweaked2Series2 = XYChart.Series<String, Number>()
     val tweaked2Chart = SmoothedChart<String, Number>(CategoryAxis(), NumberAxis())
+
+    val tweakedSeries1 = XYChart.Series<String, Number>()
+    var tweakedSeries2 = XYChart.Series<String, Number>()
+    var tweakedSeries3 = XYChart.Series<String, Number>()
+    var tweakedChart = SmoothedChart<String, Number>(CategoryAxis(), NumberAxis())
 
     init {
         tweaked2Series1.name = "Products sold last year"
@@ -83,9 +92,125 @@ class SCEView : View("SmoothCharts Example") {
                 BackgroundFill(Color.web("#00AEF5"), CornerRadii(1024.0), Insets(2.0))))
 
         tweaked2Chart.setSymbolSize(tweaked2Series2, 10.0)
+        tweaked2Chart.isInteractive = true
+
+
+
+        tweakedSeries1.name = "Product 1"
+        tweakedSeries1.data.add(XYChart.Data("MO", 105))
+        tweakedSeries1.data.add(XYChart.Data("TU", 95))
+        tweakedSeries1.data.add(XYChart.Data("WE", 112))
+        tweakedSeries1.data.add(XYChart.Data("TH", 165))
+        tweakedSeries1.data.add(XYChart.Data("FR", 132))
+        tweakedSeries1.data.add(XYChart.Data("SA", 120))
+        tweakedSeries1.data.add(XYChart.Data("SU", 153))
+
+        tweakedSeries2.name = "Product 2"
+        tweakedSeries2.data.add(XYChart.Data("MO", 75))
+        tweakedSeries2.data.add(XYChart.Data("TU", 98))
+        tweakedSeries2.data.add(XYChart.Data("WE", 145))
+        tweakedSeries2.data.add(XYChart.Data("TH", 150))
+        tweakedSeries2.data.add(XYChart.Data("FR", 125))
+        tweakedSeries2.data.add(XYChart.Data("SA", 141))
+        tweakedSeries2.data.add(XYChart.Data("SU", 250))
+
+        tweakedSeries3.name = "Product 3"
+        tweakedSeries3.data.add(XYChart.Data("MO", 150))
+        tweakedSeries3.data.add(XYChart.Data("TU", 140))
+        tweakedSeries3.data.add(XYChart.Data("WE", 125))
+        tweakedSeries3.data.add(XYChart.Data("TH", 130))
+        tweakedSeries3.data.add(XYChart.Data("FR", 127))
+        tweakedSeries3.data.add(XYChart.Data("SA", 150))
+        tweakedSeries3.data.add(XYChart.Data("SU", 165))
+
+        // Tweaked Chart
+        tweakedChart.data.addAll(tweakedSeries1, tweakedSeries2, tweakedSeries3)
+        tweakedChart.isInteractive = true
+
+        // Set the chart type (AREA or LINE);
+        tweakedChart.chartType = SmoothedChart.ChartType.LINE
+
+        // Tweak the chart background
+        val gradient = RadialGradient(0.0, 0.0, 0.5, 0.25, 0.5, true, CycleMethod.NO_CYCLE,
+                Stop(0.0, Color.web("#313A48")),
+                Stop(1.0, Color.web("#26262D")))
+        tweakedChart.background = Background(BackgroundFill(gradient, CornerRadii.EMPTY, Insets.EMPTY))
+
+        // Tweak the chart plot background
+        tweakedChart.chartPlotBackground.background = TRANSPARENT_BACKGROUND
+
+        // Tweak the legend
+        tweakedChart.setLegendBackground(TRANSPARENT_BACKGROUND)
+        tweakedChart.setLegendTextFill(Color.WHITE)
+
+        // Tweak the axis
+        tweakedChart.setXAxisTickLabelFill(Color.web("#7A808D"))
+        tweakedChart.setYAxisTickLabelFill(Color.web("#7A808D"))
+        tweakedChart.setAxisTickMarkFill(Color.TRANSPARENT)
+        tweakedChart.setXAxisBorderColor(Color.TRANSPARENT)
+        tweakedChart.setYAxisBorderColor(Color.TRANSPARENT)
+
+        // Tweak the grid lines
+        tweakedChart.horizontalGridLines.stroke = Color.TRANSPARENT
+        val verticalGridLineGradient = LinearGradient(0.0, 0.0, 0.0, 1.0, true, CycleMethod.NO_CYCLE,
+                Stop(0.0, Color.TRANSPARENT),
+                Stop(0.35, Color.TRANSPARENT),
+                Stop(1.0, Color.web("#7A808D")))
+
+        tweakedChart.verticalGridLines.stroke = verticalGridLineGradient
+        tweakedChart.isHorizontalZeroLineVisible = false
+        tweakedChart.symbolsVisible = false
+
+        // Tweak series colors
+        tweakedChart.setSeriesColor(tweakedSeries1, LinearGradient(0.0, 0.0, 1.0, 0.0,
+                true, CycleMethod.NO_CYCLE,
+                Stop(0.0, Color.web("#54D1FF")),
+                Stop(1.0, Color.web("#016AED"))),
+                Color.TRANSPARENT)
+        tweakedChart.setSeriesColor(tweakedSeries2, LinearGradient(0.0, 0.0, 1.0, 0.0,
+                true, CycleMethod.NO_CYCLE,
+                Stop(0.0, Color.web("#F9348A")),
+                Stop(1.0, Color.web("#EB123A"))),
+                Color.TRANSPARENT)
+        tweakedChart.setSeriesColor(tweakedSeries3, LinearGradient(0.0, 0.0, 1.0, 0.0,
+                true, CycleMethod.NO_CYCLE,
+                Stop(0.0, Color.web("#7BFB00")),
+                Stop(1.0, Color.web("#FCE207"))),
+                Color.TRANSPARENT)
+
+        // Tweak series strokes
+        val tweakedSeries1Path = tweakedChart.getStrokePath(tweakedSeries1)
+        val tweakedSeries2Path = tweakedChart.getStrokePath(tweakedSeries2)
+        val tweakedSeries3Path = tweakedChart.getStrokePath(tweakedSeries3)
+
+        tweakedSeries1Path.strokeWidth = 4.0
+        tweakedSeries2Path.strokeWidth = 4.0
+        tweakedSeries3Path.strokeWidth = 4.0
+
+        tweakedSeries1Path.strokeLineCap = StrokeLineCap.ROUND
+        tweakedSeries2Path.strokeLineCap = StrokeLineCap.ROUND
+        tweakedSeries3Path.strokeLineCap = StrokeLineCap.ROUND
+
+        val lineLight = InnerShadow(BlurType.GAUSSIAN, Color.rgb(255, 255, 255, 0.65), 3.0, 0.0, 0.0, 2.0)
+        val lineShadow = DropShadow(BlurType.GAUSSIAN, Color.rgb(0, 0, 0, 0.45), 10.0, 0.0, 0.0, 15.0)
+        lineShadow.input = lineLight
+        tweakedSeries1Path.effect = lineShadow
+        tweakedSeries2Path.effect = lineShadow
+        tweakedSeries3Path.effect = lineShadow
     }
 
-    override val root = borderpane {
-        center = tweaked2Chart
-    }
+    override val root =
+            tabpane {
+                tab("Tweaked Chart 1") {
+                    isClosable = false
+                    borderpane { center = tweakedChart }
+
+                }
+
+                tab("Tweaked Chart 2") {
+                    isClosable = false
+                    borderpane { center = tweaked2Chart }
+
+                }
+            }
 }
